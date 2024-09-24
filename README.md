@@ -79,9 +79,9 @@ include plugin_dir_path( __FILE__ ) . 'svelte_kit_shortcode.php';
 
 ## Attributions
 
-This adapter was heavily inspired by [sveltekit-adapter-wordpress-shortcode](https://github.com/tomatrow/sveltekit-adapter-wordpress-shortcode).
+This adapter was heavily inspired by [sveltekit-adapter-wordpress-shortcode](https://github.com/tomatrow/sveltekit-adapter-wordpress-shortcode) by **@tomatrow**.
 
-WordPress plugins bindings took inspirations from [this old repo](https://github.com/Ebeldev/svelte-wordpress-plugin).
+WordPress plugins bindings took inspirations from [this old repo](https://github.com/Ebeldev/svelte-wordpress-plugin) by **@Ebeldev**.
 
 <!--
 ### Passing attributes and content
