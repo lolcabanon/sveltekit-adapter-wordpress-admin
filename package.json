@@ -1,6 +1,6 @@
 {
   "name": "sveltekit-adapter-wordpress-admin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Build wordpress plugin admin interface with SvelteKit",
   "keywords": [
     "adapter",
