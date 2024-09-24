@@ -16,12 +16,8 @@
         "strict": true,
         "baseUrl": ".",
         "paths": {
-            "@sveltejs/kit": [
-                "../kit/types/index"
-            ]
+            "@sveltejs/kit": ["../kit/types/index"]
         }
     },
-    "include": [
-        "index.js",
-    ]
+    "include": ["index.js"]
 }

@@ -1,50 +1,55 @@
 {
-  "name": "sveltekit-adapter-wordpress-admin",
-  "version": "0.0.2",
-  "description": "Build wordpress plugin admin interface with SvelteKit",
-  "keywords": [
-    "adapter",
-    "deploy",
-    "hosting",
-    "node.js",
-    "svelte",
-    "sveltekit"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lolcabanon/sveltekit-adapter-wordpress-admin"
-  },
-  "main": "index.js",
-  "type": "module",
-  "author": "Jules Luzy-Riopel <jules@lafabriquevirtuelle.com>",
-  "files": [
-    "files",
-    "index.d.ts",
-    "index.js"
-  ],
-  "license": "MIT",
-  "exports": {
-    ".": {
-      "types": "./index.d.ts",
-      "import": "./index.js"
+    "name": "sveltekit-adapter-wordpress-admin",
+    "version": "0.0.2",
+    "description": "Build wordpress plugin admin interface with SvelteKit",
+    "title": "Sveltekit Adapter Wordpress Admin",
+    "npm": "sveltekit-adapter-wordpress-admin",
+    "categories": [
+        "sveltekit-adapters"
+    ],
+    "keywords": [
+        "adapter",
+        "deploy",
+        "hosting",
+        "node.js",
+        "svelte",
+        "sveltekit"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lolcabanon/sveltekit-adapter-wordpress-admin"
     },
-    "./package.json": "./package.json"
-  },
-  "types": "index.d.ts",
-  "scripts": {
-    "test": "echo \"tests temporarily disabled\" # vitest run",
-    "check": "tsc",
-    "lint": "prettier --check .",
-    "format": "pnpm lint --write"
-  },
-  "devDependencies": {
-    "@sveltejs/kit": "2.5.28",
-    "@types/jsdom": "^20.0.1"
-  },
-  "dependencies": {
-    "jsdom": "^20.0.3"
-  },
-  "peerDependencies": {
-    "@sveltejs/kit": "^2.4.0"
-  }
+    "main": "index.js",
+    "type": "module",
+    "author": "Jules Luzy-Riopel <jules@lafabriquevirtuelle.com>",
+    "files": [
+        "files",
+        "index.d.ts",
+        "index.js"
+    ],
+    "license": "MIT",
+    "exports": {
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "types": "index.d.ts",
+    "scripts": {
+        "test": "echo \"tests temporarily disabled\" # vitest run",
+        "check": "tsc",
+        "lint": "prettier --check .",
+        "format": "pnpm lint --write"
+    },
+    "devDependencies": {
+        "@sveltejs/kit": "2.5.28",
+        "@types/jsdom": "^20.0.1"
+    },
+    "dependencies": {
+        "jsdom": "^20.0.3"
+    },
+    "peerDependencies": {
+        "@sveltejs/kit": "^2.4.0"
+    }
 }
