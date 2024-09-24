@@ -1,50 +1,65 @@
-# sveltekit-adapter-wordpress-shortcode (SKAWPSC)
+# sveltekit-adapter-wordpress-admin (SKAWA)
 
-[Adapter](https://kit.svelte.dev/docs#adapters) for SvelteKit which turns your app into a wordpress shortcode.
+[Adapter](https://kit.svelte.dev/docs#adapters) for SvelteKit which turns your app into a wordpress plugin admin interface.
 
 ## Usage
 
-Install with `npm i -D sveltekit-adapter-wordpress-shortcode`, setup the adapter in `svelte.config.js`, add `index.php` to the project root, and mark the parts of your template you want to include in the shortcode.
+Install with `npm i -D sveltekit-adapter-wordpress-admin`, setup the adapter in `svelte.config.js`.
 
 ### Example `svelte.config.js`
 
 Note: It's likely you will need to set custom base paths for Wordpress.
 
 ```js
-// svelte.config.js
-import adapter from "sveltekit-adapter-wordpress-shortcode"
+import adapter from 'sveltekit-adapter-wordpress-admin';
+
+import { sveltePreprocess } from 'svelte-preprocess';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	kit: {
-		// all the default options
-		adapter: adapter({
-			pages: "build",
-			assets: "build",
-			fallback: null,
-			indexPath: "index.php",
-			shadow: false,
-			shortcode: "svelte-kit-shortcode",
-			prefix: "skawpsc_svelte_kit_shortcode",
-			renderHead: head =>
-				[...head.querySelectorAll(`link[rel="modulepreload"]`)]
-					.map(element => element.outerHTML)
-					.join(""),
-			renderBody: body => body.innerHTML
-		})
-	}
-}
+    preprocess: [sveltePreprocess(), vitePreprocess()],
+
+    kit: {
+        // adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
+        // If your environment is not supported, or you settled on a specific environment, switch out the adapter.
+        // See https://kit.svelte.dev/docs/adapters for more information about adapters.
+        adapter: adapter({
+            pages: 'build',
+            assets: 'build',
+            fallback: null,
+            indexPath: 'index.php',
+            shadow: false,
+            menu: {
+                page_title: 'Svelte in Admin!',
+                menu_title: 'Svelte in Admin!',
+                icon: 'dashicons-generic',
+                slug: 'svelte-in-admin'
+            },
+            prefix: 'skawa_svelte_in_admin',
+            renderHead: (head) =>
+                [...head.querySelectorAll(`link[rel="modulepreload"]`)]
+                    .map((element) => element.outerHTML)
+                    .join(''),
+            renderBody: (body) => body.innerHTML
+        }),
+
+        embedded: true
+    }
+};
+
+const host = 'https://example.com';
 
 // handle wordpress url structure
-if (process.env.NODE_ENV === "production") {
-	const base = "/wp-content/plugins/my-shortcode-plugin"
-	config.kit.paths = {
-		base,
-		assets: "https://example.com" + base
-	}
+if (process.env.NODE_ENV === 'production') {
+    const base = '/wp-content/plugins/my-wp-plugin/admin/build';
+    config.kit.paths = {
+        base,
+        assets: host + base
+    };
 }
 
-export default config
+export default config;
 ```
 
 ### Example `index.php`
@@ -62,6 +77,13 @@ include plugin_dir_path( __FILE__ ) . 'svelte_kit_shortcode.php';
 ?>
 ```
 
+## Attributions
+
+This adapter was heavily inspired by [sveltekit-adapter-wordpress-shortcode](https://github.com/tomatrow/sveltekit-adapter-wordpress-shortcode).
+
+WordPress plugins bindings took inspirations from [this old repo](https://github.com/Ebeldev/svelte-wordpress-plugin).
+
+<!--
 ### Passing attributes and content
 
 Both are inserted right before the svelte kit body.
@@ -81,14 +103,16 @@ becomes
 <template id="my-shortcode-content">
 	<a href="/">Home</a>
 </template>
-<!-- svelte kit body stuff -->
+<!-- svelte kit body stuff -_>
 ```
+-->
 
+<!--
 ## Style Isolation
 
 ### (1) Shadow dom
 
-Setting the `shadow` option to true puts the head, body, and shortcode data under one shadow dom.
+Setting the `shadow` option to true puts the head and body data under one shadow dom.
 
 ### or (2) Postcss
 
@@ -128,6 +152,7 @@ const config = {
 
 module.exports = config
 ```
+-->
 
 ## License
 
