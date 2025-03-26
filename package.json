@@ -19,6 +19,9 @@
         "type": "git",
         "url": "https://github.com/lolcabanon/sveltekit-adapter-wordpress-admin"
     },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
     "main": "index.js",
     "type": "module",
     "author": "Jules Luzy-Riopel <jules@lafabriquevirtuelle.com>",
