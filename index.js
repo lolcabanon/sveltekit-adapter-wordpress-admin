@@ -26,6 +26,7 @@ const defaultAdapterOptions = {
   fallback: null,
   indexPath: 'index.php',
   shadow: false,
+  enqueueMedia: false,
   menuOptions: defaultMenuOptions,
   prefix: 'skawa_' + defaultMenuOptions.slug.replace(/[^\w]/g, '_'),
   renderHead: (head) =>
@@ -149,10 +150,12 @@ add_filter( 'script_loader_tag', 'sveltekit_load_module', 10, 2 );
           MENU_TITLE: wpMenuOptions.menu_title,
           CAPABILITY: wpMenuOptions.capability,
           MENU_SLUG: wpMenuOptions.slug,
+          toplevel_page_MENU_SLUG: `toplevel_page_${wpMenuOptions.slug}`,
           MENU_ICON: wpMenuOptions.icon,
           ENQUEUE_SCRIPTS,
           FILTER_TYPE_MODULE,
-          ENQUEUE_STYLES
+          ENQUEUE_STYLES,
+          ENQUEUE_MEDIA: String(adapterOptions.enqueueMedia)
         }
       });
 

@@ -9,6 +9,7 @@ export type AdapterOptions = {
   indexPath: string;
   menuOptions: MenuOptions;
   shadow: boolean;
+  enqueueMedia: boolean;
   prefix: string;
   renderHead: (head: HTMLHeadElement) => string;
   renderBody: (head: HTMLBodyElement) => string;

@@ -36,7 +36,7 @@ if (!class_exists('Svelte_Plugin')):
 
         public function svelte_scripts($hook)
         {
-            if ('toplevel_page_svelte-plugin-in-admin' != $hook)
+            if ('toplevel_page_MENU_SLUG' != $hook)
                 return;
 
             ENQUEUE_SCRIPTS
@@ -44,6 +44,10 @@ if (!class_exists('Svelte_Plugin')):
             FILTER_TYPE_MODULE
 
             ENQUEUE_STYLES
+
+            if (ENQUEUE_MEDIA) {
+                wp_enqueue_media();
+            }
         }
 
         public function set_version()
@@ -54,7 +58,6 @@ if (!class_exists('Svelte_Plugin')):
 
         public function svelte_plugin_callback()
         {
-
             include('svelte_kit_admin_body.html');
         }
     }
