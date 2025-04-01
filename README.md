@@ -69,13 +69,16 @@ Note: You can choose the path by setting `indexPath` in the adapter config.
 ```php
 <!-- index.php -->
 <?php
-/**
- * Plugin Name: My Shortcode
- */
 
-include plugin_dir_path( __FILE__ ) . 'svelte_kit_shortcode.php';
+include plugin_dir_path( __FILE__ ) . 'svelte_kit_admin.php';
+
+// add other PHP code here, like `add_action('rest_api_init', 'mu_plugin_register_routes');` and so on
 ?>
 ```
+
+> [!NOTE]  
+> **Current limitation**  
+> You'll need to write all your PHP code in one file for the moment. Please submit an issue if you'd like me to think about a `indexDir` option or something. I might do it sometimes if I need it.
 
 ## Attributions
 
