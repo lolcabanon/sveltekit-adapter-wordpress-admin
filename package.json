@@ -20,7 +20,7 @@
         "url": "https://github.com/lolcabanon/sveltekit-adapter-wordpress-admin"
     },
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
+        "registry": "https://registry.npmjs.org/"
     },
     "main": "index.js",
     "type": "module",
