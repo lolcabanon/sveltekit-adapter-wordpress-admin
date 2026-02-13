@@ -7,6 +7,7 @@ export type AdapterOptions = {
   assets: string;
   fallback: string?;
   indexPath: string;
+  plugin_class: string;
   menuOptions: MenuOptions;
   shadow: boolean;
   enqueueMedia: boolean;

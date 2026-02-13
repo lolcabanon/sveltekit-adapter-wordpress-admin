@@ -30,6 +30,7 @@ const config = {
             fallback: null,
             indexPath: 'index.php',
             shadow: false,
+            plugin_class: 'Svelte_Plugin',
             menu: {
                 page_title: 'Svelte in Admin!',
                 menu_title: 'Svelte in Admin!',

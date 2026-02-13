@@ -27,6 +27,7 @@ const defaultAdapterOptions = {
   indexPath: 'index.php',
   shadow: false,
   enqueueMedia: false,
+  plugin_class: 'Svelte_Plugin',
   menuOptions: defaultMenuOptions,
   prefix: 'skawa_' + defaultMenuOptions.slug.replace(/[^\w]/g, '_'),
   renderHead: (head) =>
@@ -58,13 +59,16 @@ export default function (adapterOptions) {
     async adapt(/** @type {import('@sveltejs/kit').Builder}*/ builder) {
       if (!builder.config.kit.paths.base)
         builder.log.warn(
-          'You should set config.kit.paths.base to something like `/wp-content/plugins/my-admin-plugin`'
+          'You should set config.kit.paths.base to something like `/wp-content/plugins/my-admin-plugin`.',
         );
 
       if (!builder.config.kit.paths.assets)
         builder.log.warn(
-          'You should set config.kit.paths.assets to something like `https://example.com/wp-content/plugins/my-admin-plugin`'
+          'You should set config.kit.paths.assets to something like `https://example.com/wp-content/plugins/my-admin-plugin`.',
         );
+
+      if (adapterOptions.plugin_class === defaultAdapterOptions.plugin_class)
+        builder.log.warn('You should define `plugin_class` adapter option to avoid naming conflicts between plugins.`');
 
       builder.rimraf(assets);
       builder.rimraf(pages);
@@ -146,6 +150,7 @@ add_filter( 'script_loader_tag', 'sveltekit_load_module', 10, 2 );
       builder.copy(indexPath, resolve(pages, 'index.php'));
       builder.copy(files, pages, {
         replace: {
+          PLUGIN_CLASS: adapterOptions.plugin_class,
           PAGE_TITLE: wpMenuOptions.page_title,
           MENU_TITLE: wpMenuOptions.menu_title,
           CAPABILITY: wpMenuOptions.capability,

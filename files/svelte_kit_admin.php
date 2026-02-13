@@ -1,7 +1,7 @@
 <?php
 
-if (!class_exists('Svelte_Plugin')):
-    class Svelte_Plugin
+if (!class_exists('PLUGIN_CLASS')):
+    class PLUGIN_CLASS
     {
 
         private string $page_title = 'PAGE_TITLE';
@@ -62,7 +62,7 @@ if (!class_exists('Svelte_Plugin')):
         }
     }
 
-    $svelte_plugin = new Svelte_Plugin();
+    $svelte_plugin = new PLUGIN_CLASS();
 // add_action( 'plugins_loaded', array( 'Svelte_Plugin', 'init_actions' ) );
 
 endif;
